@@ -12,6 +12,9 @@ function newGame() {
 function guess(){
     let input = document.getElementById("guess");
     let letter = input.value;
+    if(word.indexOf(letter) < 0){
+        guessCount--;
+    }
     guesses += letter;
     updateScreen();
 }
@@ -29,4 +32,6 @@ function updateScreen() {
     clue.textContent = clueString;
     let guessArea = document.getElementById("guesses");
     guessArea.textContent = "Guessed Letters: " + guesses;
+    let image = document.getElementById("hangmanpic");
+    image.src = `images/hangman${guessCount}.gif`;
 }
